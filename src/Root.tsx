@@ -1,3 +1,11 @@
+//styled-components setup
+import { ThemeProvider } from 'styled-components';
+import { myTheme } from 'assets/styles/my-theme';
+
 export const Root = () => {
-  return <h1>Działa!!!</h1>;
+  return (
+    <ThemeProvider theme={myTheme}>
+      <h1>It works pretty good</h1>
+    </ThemeProvider>
+  );
 };
