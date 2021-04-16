@@ -16,7 +16,7 @@ const Logo = styled.div`
     font-weight: 500;
     letter-spacing: 0.5px;
     margin-left: 10px;
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fontSize.l};
   }
   .icon-background {
     width: 32px;

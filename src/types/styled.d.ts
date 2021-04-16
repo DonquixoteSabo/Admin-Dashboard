@@ -8,5 +8,12 @@ declare module 'styled-components' {
       gray: string;
       blue: string;
     };
+    fontSize: {
+      xs: string;
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+    };
   }
 }

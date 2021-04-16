@@ -7,6 +7,13 @@ const theme: DefaultTheme = {
     gray: '#A4A6B3',
     blue: '#3751FF',
   },
+  fontSize: {
+    xs: '12px',
+    s: '14px',
+    m: '16px',
+    l: '18px',
+    xl: '24px',
+  },
 };
 
 export { theme };
