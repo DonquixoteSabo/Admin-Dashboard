@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
+//components
 import { Navigation } from 'components/organism/Navigation';
-import { Overview } from 'components/organism/Overview';
+
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -9,11 +11,11 @@ const Wrapper = styled.div`
   grid-template-columns: 300px 1fr;
 `;
 
-export const MainTemplate = () => {
+export const MainTemplate: React.FC = ({ children }) => {
   return (
     <Wrapper>
       <Navigation />
-      <Overview />
+      <div>{children}</div>
     </Wrapper>
   );
 };
