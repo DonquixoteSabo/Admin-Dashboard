@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
+  text-decoration: none;
   color: ${({ theme }) => theme.colors.gray1};
   display: flex;
   justify-content: center;

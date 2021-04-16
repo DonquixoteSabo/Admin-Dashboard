@@ -3,7 +3,7 @@ import { Wrapper } from './styles';
 
 export const Logo = () => {
   return (
-    <Wrapper>
+    <Wrapper to="/">
       <div className="icon-background">
         <IoAnalyticsOutline />
       </div>
