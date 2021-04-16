@@ -1,14 +1,21 @@
 //styled-components setup
 import { ThemeProvider } from 'styled-components';
-import { myTheme } from 'assets/styles/my-theme';
+import { theme } from 'assets/styles/my-theme';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { MainTemplate } from 'components/templates/MainTemplate/index';
+// Routes-setup
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Routes } from 'Routes';
 
 export const Root = () => {
   return (
-    <ThemeProvider theme={myTheme}>
-      <GlobalStyle />
-      <MainTemplate />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainTemplate>
+          <Routes />
+        </MainTemplate>
+      </ThemeProvider>
+    </Router>
   );
 };
