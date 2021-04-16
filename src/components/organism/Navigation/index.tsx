@@ -1,3 +1,5 @@
+//components
+import { Logo } from 'components/atoms/Logo';
 //react-icons
 import { BsFillPieChartFill } from 'react-icons/bs';
 import { FaTicketAlt } from 'react-icons/fa';
@@ -5,7 +7,6 @@ import { FaTicketAlt } from 'react-icons/fa';
 import { Route } from './types';
 //styles
 import { Wrapper, List, StyledLink } from './styles';
-import { Logo } from 'components/atoms/Logo';
 
 const links: Route[] = [
   {

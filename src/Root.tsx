@@ -4,7 +4,12 @@ import { theme } from 'assets/styles/my-theme';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { MainTemplate } from 'components/templates/MainTemplate/index';
 // Routes-setup
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 //views
 import { Overview } from 'views/Overview';
 export const Root = () => {
@@ -14,8 +19,11 @@ export const Root = () => {
         <GlobalStyle />
         <MainTemplate>
           <Switch>
-            <Route path="/">
+            <Route path="/overview">
               <Overview />
+            </Route>
+            <Route path="/">
+              <Redirect to="/overview" />
             </Route>
           </Switch>
         </MainTemplate>
