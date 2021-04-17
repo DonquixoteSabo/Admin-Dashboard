@@ -1,3 +1,5 @@
+import { Header } from 'components/atoms/Header';
+
 export const Tickets = () => {
-  return <h1>Tickets Page</h1>;
+  return <Header>Tickets Page</Header>;
 };

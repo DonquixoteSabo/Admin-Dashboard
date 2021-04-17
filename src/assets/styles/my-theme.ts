@@ -4,6 +4,7 @@ const theme: DefaultTheme = {
   colors: {
     light: '#F7F8FC',
     dark: '#363740',
+    black: '#252733',
     gray1: '#A4A6B3',
     gray2: '#DDE2FF',
     gray3: '#9FA2B4',
