@@ -5,7 +5,7 @@ import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { MainTemplate } from 'components/templates/MainTemplate/index';
 // Routes-setup
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Routes } from 'Routes';
+import { Routes } from 'routes/Routes';
 
 export const Root = () => {
   return (
