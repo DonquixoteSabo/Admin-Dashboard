@@ -8,6 +8,7 @@ const theme: DefaultTheme = {
     gray1: '#A4A6B3',
     gray2: '#DDE2FF',
     gray3: '#9FA2B4',
+    gray4: '#dfe0eb',
     blue: '#3751FF',
   },
   fontSize: {
