@@ -4,7 +4,7 @@ import { renderWithProviders } from 'helpers/renderWithProviders';
 //componets
 import { Navigation } from 'components/organism/Navigation';
 import { MainTemplate } from 'components/templates/MainTemplate';
-import { Routes } from 'Routes';
+import { Routes } from 'routes/Routes';
 
 describe('Navigation', () => {
   it('renders navigation', () => {
