@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Card = styled.li`
-  display: block;
   width: 22%;
   height: 150px;
   display: flex;
@@ -50,7 +49,8 @@ const Data = styled.section`
   height: 500px;
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 350px;
+  grid-template-columns: auto 1fr;
+  border-radius: 20px;
   hgroup {
     padding: 30px 25px;
   }
@@ -63,6 +63,12 @@ const Data = styled.section`
   h6 {
     font-size: ${({ theme }) => theme.fontSize.s};
     color: ${({ theme }) => theme.colors.gray3};
+  }
+  ul {
+    width: 100%;
+    grid-row: 1/-1;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -90,6 +96,55 @@ const data: CardType[] = [
   },
 ];
 
+const todaysData: { title: string; value: number | string }[] = [
+  {
+    title: 'Resolved',
+    value: 449,
+  },
+  {
+    title: 'Received',
+    value: 426,
+  },
+  {
+    title: 'Average first response time',
+    value: '33m',
+  },
+  {
+    title: 'Average response time',
+    value: '3h 8min',
+  },
+  {
+    title: 'Resolution within SLA',
+    value: '94%',
+  },
+];
+
+const Items = styled.li`
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid ${({ theme }) => theme.colors.gray4};
+  font-size: ${({ theme }) => theme.fontSize.m};
+  .title {
+    padding: 0;
+    color: ${({ theme }) => theme.colors.gray3};
+    font-weight: 500;
+  }
+  .value {
+    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.xl};
+  }
+  &:nth-child(1) {
+    border-top-right-radius: 20px;
+  }
+  &:nth-last-child(1) {
+    border-bottom-right-radius: 20px;
+  }
+`;
+
 export const Overview = () => {
   return (
     <Wrapper>
@@ -110,6 +165,14 @@ export const Overview = () => {
           <h6>as of 17 April 2021, 10:10 AM</h6>
         </hgroup>
         <Chart />
+        <ul>
+          {todaysData.map(({ title, value }) => (
+            <Items key={title}>
+              <p className="title">{title}</p>
+              <p className="value">{value}</p>
+            </Items>
+          ))}
+        </ul>
       </Data>
     </Wrapper>
   );

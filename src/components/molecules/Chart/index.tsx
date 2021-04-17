@@ -37,12 +37,13 @@ const Wrapper = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
   margin-top: auto;
+  border-right: 1px solid ${({ theme }) => theme.colors.gray4};
 `;
 
 export const Chart = () => {
   return (
     <Wrapper>
-      <LineChart width={800} height={400} data={data}>
+      <LineChart width={1000} height={400} data={data}>
         <Line
           strokeWidth={2}
           type="monotone"
