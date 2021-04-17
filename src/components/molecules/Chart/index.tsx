@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import {
   LineChart,
   Line,
@@ -32,25 +33,34 @@ const data = [
   { hour: '22', sells: 35 },
 ];
 
+const Wrapper = styled.div`
+  grid-column: 1/2;
+  grid-row: 2/3;
+  margin-top: auto;
+`;
+
 export const Chart = () => {
   return (
-    <LineChart width={800} height={400} data={data}>
-      <Line
-        type="monotone"
-        dataKey="sells"
-        stroke="#3751FF"
-        dot={false}
-        activeDot={{ stroke: '#3751FF', strokeWidth: 3 }}
-      />
-      <Tooltip />
-      <CartesianGrid stroke="#ccc" vertical={false} />
-      <XAxis
-        padding={{ left: 20, right: 20 }}
-        dataKey="hour"
-        axisLine={false}
-        stroke="#9FA2B4"
-      />
-      <YAxis orientation="right" axisLine={false} stroke="#9FA2B4" />
-    </LineChart>
+    <Wrapper>
+      <LineChart width={800} height={400} data={data}>
+        <Line
+          strokeWidth={2}
+          type="monotone"
+          dataKey="sells"
+          stroke="#3751FF"
+          dot={false}
+          activeDot={{ stroke: '#3751FF', strokeWidth: 3 }}
+        />
+        <Tooltip />
+        <CartesianGrid stroke="#ccc" vertical={false} />
+        <XAxis
+          padding={{ left: 20, right: 20 }}
+          dataKey="hour"
+          axisLine={false}
+          stroke="#9FA2B4"
+        />
+        <YAxis orientation="right" axisLine={false} stroke="#9FA2B4" />
+      </LineChart>
+    </Wrapper>
   );
 };

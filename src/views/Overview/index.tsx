@@ -1,4 +1,5 @@
 import { Header } from 'components/atoms/Header';
+import { Chart } from 'components/molecules/Chart';
 
 import styled from 'styled-components';
 
@@ -42,6 +43,29 @@ export const Card = styled.li`
   }
 `;
 
+const Data = styled.section`
+  margin-top: 30px;
+  background-color: white;
+  grid-column: 1/-1;
+  height: 500px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 350px;
+  hgroup {
+    padding: 30px 25px;
+  }
+  h1 {
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.black};
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    padding-bottom: 10px;
+  }
+  h6 {
+    font-size: ${({ theme }) => theme.fontSize.s};
+    color: ${({ theme }) => theme.colors.gray3};
+  }
+`;
+
 interface CardType {
   title: string;
   value: number;
@@ -80,6 +104,13 @@ export const Overview = () => {
           </Card>
         ))}
       </ul>
+      <Data>
+        <hgroup>
+          <h1>Today's trends</h1>
+          <h6>as of 17 April 2021, 10:10 AM</h6>
+        </hgroup>
+        <Chart />
+      </Data>
     </Wrapper>
   );
 };
