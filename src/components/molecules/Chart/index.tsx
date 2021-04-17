@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   LineChart,
   Line,
@@ -7,6 +6,9 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
+//styles
+import { Wrapper } from './styles';
+
 const data = [
   { hour: '0', sells: 10 },
   { hour: '1', sells: 13 },
@@ -32,13 +34,6 @@ const data = [
   { hour: '21', sells: 36 },
   { hour: '22', sells: 35 },
 ];
-
-const Wrapper = styled.div`
-  grid-column: 1/2;
-  grid-row: 2/3;
-  margin-top: auto;
-  border-right: 1px solid ${({ theme }) => theme.colors.gray4};
-`;
 
 export const Chart = () => {
   return (
