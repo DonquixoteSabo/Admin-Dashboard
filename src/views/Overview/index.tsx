@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
 export const Card = styled.li`
   display: block;
-  width: 20%;
+  width: 22%;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -38,6 +38,7 @@ export const Card = styled.li`
   }
   .value {
     font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.xxl};
   }
 `;
 
