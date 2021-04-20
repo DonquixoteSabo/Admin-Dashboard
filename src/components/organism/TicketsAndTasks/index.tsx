@@ -39,25 +39,6 @@ export const InnerWrapper = styled.article`
       color: ${({ theme }) => theme.colors.gray1};
     }
   }
-  ul {
-    grid-column: 1/-1;
-    margin-top: 20px;
-  }
-  li {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 20px;
-    color: ${({ theme }) => theme.colors.black};
-    font-weight: 600;
-    border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray4};
-    padding: 20px;
-    &:nth-last-child(1) {
-      border-bottom: none;
-    }
-    small {
-      color: ${({ theme }) => theme.colors.gray3};
-    }
-  }
 `;
 
 export const TicketsAndTasks = () => {

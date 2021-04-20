@@ -1,11 +1,31 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { Title, InnerWrapper } from 'components/organism/TicketsAndTasks';
 //types
 import { Ticket } from 'types/Ticket';
+
+export const List = styled.ul`
+  grid-column: 1/-1;
+  margin-top: 20px;
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    color: ${({ theme }) => theme.colors.black};
+    font-weight: 600;
+    border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray4};
+    padding: 20px;
+    &:nth-last-child(1) {
+      border-bottom: none;
+    }
+    small {
+      color: ${({ theme }) => theme.colors.gray3};
+    }
+  }
+`;
 
 export const Tickets = () => {
   const [group] = useState('Support');
@@ -37,14 +57,14 @@ export const Tickets = () => {
         <small>Group: </small>
         {group}
       </h6>
-      <ul>
+      <List>
         {data.map(({ text, value }) => (
-          <li>
+          <li key={text}>
             <p>{text}</p>
             <small>{value}</small>
           </li>
         ))}
-      </ul>
+      </List>
     </InnerWrapper>
   );
 };
