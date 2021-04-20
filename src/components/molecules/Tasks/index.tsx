@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -47,24 +47,43 @@ export const Status = styled.div<StatusProps>`
   font-size: ${({ theme }) => theme.fontSize.s};
 `;
 
+const mockedData: Task[] = [
+  {
+    text: 'Finish ticket update',
+    status: 'urgent',
+    finished: false,
+    id: '1',
+  },
+  {
+    text: 'Create new ticket example',
+    status: 'new',
+    finished: false,
+    id: '2',
+  },
+  {
+    text: 'Update ticket reporte',
+    status: 'default',
+    finished: true,
+    id: '3',
+  },
+];
+
 export const Tasks = () => {
-  const Tasks: Task[] = [
-    {
-      text: 'Finish ticket update',
-      status: 'urgent',
-      finished: false,
-    },
-    {
-      text: 'Create new ticket example',
-      status: 'new',
-      finished: false,
-    },
-    {
-      text: 'Update ticket reporte',
-      status: 'default',
-      finished: true,
-    },
-  ];
+  const [tasks, setTasks] = useState<Task[]>(mockedData);
+
+  const handleChange = (id: string) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          finished: !task.finished,
+        };
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   return (
     <InnerWrapper>
       <Title>Tasks</Title>
@@ -75,14 +94,15 @@ export const Tasks = () => {
         <small>Today</small>
       </h6>
       <List>
-        {Tasks.map(({ text, status, finished }) => (
-          <li key={text}>
+        {tasks.map(({ text, status, finished, id }) => (
+          <li key={id}>
             <div>
               <input
                 type="checkbox"
                 name="status"
                 id="status"
-                // checked={finished}
+                checked={finished}
+                onChange={() => handleChange(id)}
               />
               <p>{text}</p>
             </div>
