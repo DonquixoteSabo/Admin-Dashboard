@@ -4,9 +4,29 @@ import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 import { Title, InnerWrapper } from 'components/organism/TicketsAndTasks';
+//types
+import { Ticket } from 'types/Ticket';
 
 export const Tickets = () => {
   const [group] = useState('Support');
+  const data: Ticket[] = [
+    {
+      text: 'Waiting on Feature Reques',
+      value: 4238,
+    },
+    {
+      text: 'Awaiting Customer Response',
+      value: 1005,
+    },
+    {
+      text: 'Awaiting Developer Fix',
+      value: 914,
+    },
+    {
+      text: 'Pending',
+      value: 281,
+    },
+  ];
   return (
     <InnerWrapper>
       <Title>Unresolved tickets</Title>
@@ -18,18 +38,12 @@ export const Tickets = () => {
         {group}
       </h6>
       <ul>
-        <li>
-          <p>Tekst</p>
-          <small>13545</small>
-        </li>
-        <li>
-          <p>Tekst</p>
-          <small>255554</small>
-        </li>
-        <li>
-          <p>Tekst</p>
-          <small>3543</small>
-        </li>
+        {data.map(({ text, value }) => (
+          <li>
+            <p>{text}</p>
+            <small>{value}</small>
+          </li>
+        ))}
       </ul>
     </InnerWrapper>
   );
