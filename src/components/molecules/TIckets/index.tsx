@@ -13,7 +13,6 @@ export const List = styled.ul`
   li {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
     color: ${({ theme }) => theme.colors.black};
     font-weight: 600;
     border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray4};
