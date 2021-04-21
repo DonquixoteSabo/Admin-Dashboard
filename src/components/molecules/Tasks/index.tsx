@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 //components
-import { Title, InnerWrapper } from 'components/organism/TicketsAndTasks';
+import {
+  Title,
+  InnerWrapper,
+} from 'components/organism/TicketsAndTasks/styles';
 //types
 import { Task } from 'types/Task';
 import { TasksList } from 'components/atoms/TasksList';
