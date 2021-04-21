@@ -55,10 +55,11 @@ export const Status = styled.div<StatusProps>`
 export const Button = styled.button`
   border: none;
   width: 30px;
-  border-radius: 50%;
   height: 30px;
-  display: grid;
-  place-items: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 30px;
   background-color: #f0f1f7;
   color: ${({ theme }) => theme.colors.gray3};
@@ -74,16 +75,6 @@ export const Input = styled.input`
   padding-left: 30px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
-`;
-
-export const Checkbox = styled.div`
-  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-    input[type='checkbox'],
-    input[type='radio'] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-  }
 `;
 
 const mockedData: Task[] = [
@@ -148,16 +139,13 @@ export const Tasks = () => {
         {tasks.map(({ text, status, finished, id }) => (
           <li key={id}>
             <div>
-              <Checkbox>
-                <input
-                  type="checkbox"
-                  name="status"
-                  id="status"
-                  checked={finished}
-                  onChange={() => handleChange(id)}
-                />
-                <span id="checkmark"></span>
-              </Checkbox>
+              <input
+                type="checkbox"
+                name="status"
+                id="status"
+                checked={finished}
+                onChange={() => handleChange(id)}
+              />
               <p>{text}</p>
             </div>
             <Status status={status}>{status}</Status>
