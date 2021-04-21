@@ -1,81 +1,14 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { AiOutlinePlus } from 'react-icons/ai';
-
-import styled from 'styled-components';
+//components
 import { Title, InnerWrapper } from 'components/organism/TicketsAndTasks';
+//styles
+import { Input } from 'components/atoms/Input';
+import { AddButton } from 'components/atoms/AddButton';
+import { Status } from 'components/atoms/Status';
+import { List } from './styles';
 //types
 import { Task } from 'types/Task';
-
-export const List = styled.ul`
-  grid-column: 1/-1;
-  margin-top: 20px;
-  .input-wrapper {
-    padding: 0;
-  }
-  li {
-    display: flex;
-    justify-content: space-between;
-    color: ${({ theme }) => theme.colors.black};
-    font-weight: 600;
-    border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray4};
-    padding: 16px 20px;
-    &:nth-last-child(1) {
-      border-bottom: none;
-    }
-    div {
-      display: flex;
-      align-items: center;
-      p {
-        margin-left: 10px;
-      }
-    }
-  }
-`;
-interface StatusProps {
-  status: 'new' | 'urgent' | 'default';
-}
-
-export const Status = styled.div<StatusProps>`
-  color: ${({ status, theme }) =>
-    status === 'new' || status === 'urgent' ? 'white' : theme.colors.gray1};
-  padding: 5px 8px;
-  border-radius: 6px;
-  background-color: ${({ theme, status }) => {
-    if (status === 'new') return '#29CC97';
-    if (status === 'urgent') return '#FEC400';
-    return '#F0F1F7';
-  }};
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSize.s};
-`;
-
-export const Button = styled.button`
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 30px;
-  background-color: #f0f1f7;
-  color: ${({ theme }) => theme.colors.gray3};
-  font-size: 22px;
-`;
-
-export const Input = styled.input`
-  border: none;
-  width: calc(90% - 30px - 60px);
-  height: 100%;
-  padding: 16px 20px;
-  outline: none;
-  padding-left: 30px;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-`;
 
 const mockedData: Task[] = [
   {
@@ -132,9 +65,7 @@ export const Tasks = () => {
               setInputValue(e.target.value)
             }
           />
-          <Button>
-            <AiOutlinePlus />
-          </Button>
+          <AddButton />
         </li>
         {tasks.map(({ text, status, finished, id }) => (
           <li key={id}>
