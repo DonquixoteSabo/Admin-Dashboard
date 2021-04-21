@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { AiOutlinePlus } from 'react-icons/ai';
 
 import styled from 'styled-components';
 import { Title, InnerWrapper } from 'components/organism/TicketsAndTasks';
@@ -9,6 +11,9 @@ import { Task } from 'types/Task';
 export const List = styled.ul`
   grid-column: 1/-1;
   margin-top: 20px;
+  .input-wrapper {
+    padding: 0;
+  }
   li {
     display: flex;
     justify-content: space-between;
@@ -47,6 +52,40 @@ export const Status = styled.div<StatusProps>`
   font-size: ${({ theme }) => theme.fontSize.s};
 `;
 
+export const Button = styled.button`
+  border: none;
+  width: 30px;
+  border-radius: 50%;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 30px;
+  background-color: #f0f1f7;
+  color: ${({ theme }) => theme.colors.gray3};
+  font-size: 22px;
+`;
+
+export const Input = styled.input`
+  border: none;
+  width: calc(90% - 30px - 60px);
+  height: 100%;
+  padding: 16px 20px;
+  outline: none;
+  padding-left: 30px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+`;
+
+export const Checkbox = styled.div`
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='checkbox'],
+    input[type='radio'] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+  }
+`;
+
 const mockedData: Task[] = [
   {
     text: 'Finish ticket update',
@@ -70,6 +109,7 @@ const mockedData: Task[] = [
 
 export const Tasks = () => {
   const [tasks, setTasks] = useState<Task[]>(mockedData);
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange = (id: string) => {
     const newTasks = tasks.map((task) => {
@@ -94,16 +134,30 @@ export const Tasks = () => {
         <small>Today</small>
       </h6>
       <List>
+        <li className="input-wrapper">
+          <Input
+            value={inputValue}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setInputValue(e.target.value)
+            }
+          />
+          <Button>
+            <AiOutlinePlus />
+          </Button>
+        </li>
         {tasks.map(({ text, status, finished, id }) => (
           <li key={id}>
             <div>
-              <input
-                type="checkbox"
-                name="status"
-                id="status"
-                checked={finished}
-                onChange={() => handleChange(id)}
-              />
+              <Checkbox>
+                <input
+                  type="checkbox"
+                  name="status"
+                  id="status"
+                  checked={finished}
+                  onChange={() => handleChange(id)}
+                />
+                <span id="checkmark"></span>
+              </Checkbox>
               <p>{text}</p>
             </div>
             <Status status={status}>{status}</Status>
