@@ -15,8 +15,12 @@ const Wrapper = styled.div`
   font-size: 22px;
 `;
 
-export const AddButton = () => (
-  <Wrapper>
+interface Props {
+  handleAddTask: () => void;
+}
+
+export const AddButton = ({ handleAddTask }: Props) => (
+  <Wrapper onClick={handleAddTask}>
     <AiOutlinePlus />
   </Wrapper>
 );
