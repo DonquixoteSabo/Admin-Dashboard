@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import styled from 'styled-components';
 
 export const Card = styled.li`
@@ -22,39 +25,29 @@ export const Card = styled.li`
   }
 `;
 
-interface CardType {
-  title: string;
-  value: number;
-}
-
-const data: CardType[] = [
-  {
-    title: 'Unresolved',
-    value: 60,
-  },
-  {
-    title: 'Overdue',
-    value: 16,
-  },
-  {
-    title: 'Open',
-    value: 43,
-  },
-  {
-    title: 'On hold',
-    value: 64,
-  },
-];
-
 export const Cards = () => {
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await axios.get('/cards');
+      const { cards } = response.data;
+      setCards(cards);
+    };
+    fetch();
+  }, []);
+
   return (
     <ul className="cards">
-      {data.map(({ title, value }) => (
-        <Card key={title}>
-          <p className="title">{title}</p>
-          <p className="value">{value}</p>
-        </Card>
-      ))}
+      {cards.length > 0 ? (
+        cards.map(({ title, value }) => (
+          <Card key={title}>
+            <p className="title">{title}</p>
+            <p className="value">{value}</p>
+          </Card>
+        ))
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </ul>
   );
 };
