@@ -6,7 +6,7 @@ import { Status } from 'components/atoms/Status';
 //styles
 import { List } from './styles';
 //hooks
-import { useTask } from 'components/hooks/useTask';
+import { useTask } from 'hooks/useTask';
 
 export const TasksList = () => {
   const [tasks, setTasks] = useState([]);
