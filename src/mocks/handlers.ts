@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import { nanoid } from 'nanoid';
 //data
 import { data } from './data';
 import { todaysData } from './data/TodaysData';
@@ -39,22 +40,33 @@ export const handlers = [
 
       const newTasks = body.currentState.map((task: Task) => {
         if (task.id === body.id) {
-          // console.log({
-          //   ...task,
-          //   finished: !body.finished,
-          // });
-
           return {
             ...task,
             finished: !body.finished,
           };
         }
-        // console.log(task);
         return task;
       });
       return res(
         ctx.json({
           tasks: newTasks,
+        })
+      );
+    }
+  ),
+  rest.post(
+    '/task-add',
+    (req: { body: { currentState: Task[]; text: string } }, res, ctx) => {
+      const body = req.body;
+      const newTask: Task = {
+        text: body.text,
+        id: nanoid(),
+        finished: false,
+        status: 'new',
+      };
+      return res(
+        ctx.json({
+          tasks: [...body.currentState, newTask],
         })
       );
     }

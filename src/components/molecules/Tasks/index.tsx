@@ -31,6 +31,15 @@ export const Tasks = () => {
     setTasks(newTasks);
   };
 
+  const handleAddTask = async (text: string) => {
+    const response = await axios.post('/task-add', {
+      currentState: tasks,
+      text,
+    });
+    const newTasks = response.data.tasks;
+    setTasks(newTasks);
+  };
+
   return (
     <InnerWrapper>
       <Title>Tasks</Title>
@@ -41,7 +50,11 @@ export const Tasks = () => {
         <small>Today</small>
       </h6>
       {tasks.length > 0 ? (
-        <TasksList handleChange={handleChange} tasks={tasks} />
+        <TasksList
+          handleChange={handleChange}
+          tasks={tasks}
+          handleAddTask={handleAddTask}
+        />
       ) : (
         <h1>Loading...</h1>
       )}

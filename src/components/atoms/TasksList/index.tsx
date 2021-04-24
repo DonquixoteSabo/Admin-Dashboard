@@ -11,10 +11,18 @@ import { Task } from 'types/Task';
 interface Props {
   tasks: Task[];
   handleChange: (id: string, finished: boolean) => void;
+  handleAddTask: (text: string) => void;
 }
 
-export const TasksList = ({ tasks, handleChange }: Props) => {
+export const TasksList = ({ tasks, handleChange, handleAddTask }: Props) => {
   const [inputValue, setInputValue] = useState('');
+
+  const handleButtonClick = () => {
+    if (inputValue) {
+      handleAddTask(inputValue);
+      setInputValue('');
+    }
+  };
 
   return (
     <List>
@@ -25,7 +33,7 @@ export const TasksList = ({ tasks, handleChange }: Props) => {
             setInputValue(e.target.value)
           }
         />
-        <AddButton />
+        <AddButton handleAddTask={handleButtonClick} />
       </li>
       {tasks.map(({ text, status, finished, id }) => (
         <li key={id}>
