@@ -15,9 +15,17 @@ export const Trends = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios('/overview');
-      const { data, todaysData } = response.data;
+      const response = await axios('/data');
+      const { data } = response.data;
       setData(data);
+    };
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await axios('/todaysData');
+      const { todaysData } = response.data;
       setTodaysData(todaysData);
     };
     fetch();
