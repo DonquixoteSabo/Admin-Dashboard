@@ -6,17 +6,24 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
+import { useState, useEffect } from 'react';
 //styles
 import { Wrapper } from './styles';
-//types
-import { Data } from 'types/data';
+//hooks
+import { useChart } from 'hooks/useChart';
 
-interface Props {
-  data: Data[];
-}
+export const Chart = () => {
+  const [data, setData] = useState([]);
+  const { getData } = useChart();
 
-export const Chart = ({ data }: Props) => {
-  return (
+  useEffect(() => {
+    (async () => {
+      const data = await getData();
+      setData(data);
+    })();
+  }, [getData]);
+
+  return data.length > 0 ? (
     <Wrapper>
       <LineChart width={1000} height={400} data={data}>
         <Line
@@ -38,5 +45,7 @@ export const Chart = ({ data }: Props) => {
         <YAxis orientation="right" axisLine={false} stroke="#9FA2B4" />
       </LineChart>
     </Wrapper>
+  ) : (
+    <h1>Loading...</h1>
   );
 };
