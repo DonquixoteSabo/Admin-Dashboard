@@ -10,7 +10,7 @@ import { Task } from 'types/Task';
 
 interface Props {
   tasks: Task[];
-  handleChange: (id: string) => void;
+  handleChange: (id: string, finished: boolean) => void;
 }
 
 export const TasksList = ({ tasks, handleChange }: Props) => {
@@ -35,7 +35,7 @@ export const TasksList = ({ tasks, handleChange }: Props) => {
               name="status"
               id="status"
               checked={finished}
-              onChange={() => handleChange(id)}
+              onChange={() => handleChange(id, finished)}
             />
             <p>{text}</p>
           </div>
