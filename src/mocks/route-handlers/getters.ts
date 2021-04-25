@@ -4,6 +4,7 @@ import { data } from 'mocks/data/index';
 import { todaysData } from 'mocks/data/TodaysData';
 import { tasks } from 'mocks/data/tasks';
 import { cards } from 'mocks/data/cards';
+import { tickets } from 'mocks/data/tickets';
 
 export const getters = [
   rest.get('/data', (req, res, ctx) => {
@@ -31,6 +32,13 @@ export const getters = [
     return res(
       ctx.json({
         cards,
+      })
+    );
+  }),
+  rest.get('/tickets', (req, res, ctx) => {
+    return res(
+      ctx.json({
+        tickets,
       })
     );
   }),

@@ -16,11 +16,11 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
-  handleAddTask: () => void;
+  handleClick: () => void;
 }
 
-export const AddButton = ({ handleAddTask }: Props) => (
-  <Wrapper onClick={handleAddTask}>
+export const AddButton = ({ handleClick }: Props) => (
+  <Wrapper onClick={handleClick}>
     <AiOutlinePlus />
   </Wrapper>
 );
